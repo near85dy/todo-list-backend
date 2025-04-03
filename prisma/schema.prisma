@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url = "mongodb+srv://developer:!23456@notes.zitsdve.mongodb.net/todo_db?retryWrites=true&w=majority&appName=notes"
+}
+
+model Task {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  status Status?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Status {
+  BEGIN
+  END
+}
